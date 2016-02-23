@@ -11,7 +11,7 @@ namespace Task2
         //Fields
         string vorname;
         string nachname;
-        int svn;
+        private int svn;
 
         //Properties
         public string Vorname
