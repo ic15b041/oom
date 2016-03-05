@@ -1,0 +1,1 @@
+[{"firstname":"David","lastname":"Boisits","popularity":0.0,"salary":2000.0,"svn":1234},{"firstname":"Peter","lastname":"Huber","popularity":0.0,"salary":3000.0,"svn":3456},{"firstname":"Manuel","lastname":"Koch","salary":5000.0,"svn":1111,"popularity":100.0},{"firstname":"Silvia","lastname":"Koch","salary":4000.0,"svn":2222,"popularity":60.0}]
