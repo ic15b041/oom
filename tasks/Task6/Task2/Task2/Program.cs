@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 
 
 namespace Task2
@@ -10,7 +12,8 @@ namespace Task2
         static void Main(string[] args)
         {
             int choice;
-            int tmp;
+            int tmp;    
+               
             var employee = new IMitarbeiter[]
             {
                 new HoferMitarbeiter("David", "Boisits", 1234, 2000),
@@ -18,6 +21,17 @@ namespace Task2
                 new Superior("Manuel", "Koch", 1111, 5000, 100.0),
                 new Superior("Silvia", "Koch", 2222, 4000, 60.0),
             };
+
+            var producer = new Subject<HoferMitarbeiter>();
+            producer.Subscribe(x => Console.WriteLine($"received value {x.Salary}"));
+
+            for(var i=0; i<10; i++)
+            {
+                var random = new Random();
+                producer.OnNext
+            }
+
+
             string json = JsonConvert.SerializeObject(employee);
             string path = @"C:\Users\David\Desktop\Json.txt";
             if(!File.Exists(path))
@@ -29,14 +43,12 @@ namespace Task2
             Console.WriteLine();
             
             foreach(var x in employee)
-            {
-                
+            {                
                 Console.Write("Firstname: " + x.Firstname + " " + "Lastname: " + x.Lastname + " " + "SVN: " + x.Svn + " " + "Salary: " + x.Salary + " ");
                 if (x is Superior)
                 {
                     var sup = (Superior)x;
-                    Console.Write("Popularity: " + sup.Popularity);
-                    
+                    Console.Write("Popularity: " + sup.Popularity);                    
                 }
                 Console.WriteLine();
             }                 
