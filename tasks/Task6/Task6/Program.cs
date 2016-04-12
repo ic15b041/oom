@@ -17,7 +17,10 @@ namespace Task6
             Task asynctask = new Task(ProcessAsync);
             asynctask.Start();
 
-            TextWriter tw = new StreamWriter(@"C:\Users\David\Desktop\workinghours.txt");
+            var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            var f = File.Open(Path.Combine(desktopPath, "workinghours.txt"), FileMode.Create, FileAccess.Write, FileShare.Read);
+            var tw = new StreamWriter(f);
 
             //Shows the thread ID of the main program
             Console.WriteLine("Application thread ID: {0}",
